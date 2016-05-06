@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="IWS Light Performance Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="IWS Light Performance Test Information" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="testCaseName" elementType="Argument">
+            <stringProp name="Argument.name">testCaseName</stringProp>
+            <stringProp name="Argument.value">${__P(TestCaseName,testcase_x)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="context" elementType="Argument">
+            <stringProp name="Argument.name">context</stringProp>
+            <stringProp name="Argument.value">/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="basePath" elementType="Argument">
+            <stringProp name="Argument.name">basePath</stringProp>
+            <stringProp name="Argument.value">/</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="rampUpTime" elementType="Argument">
+            <stringProp name="Argument.name">rampUpTime</stringProp>
+            <stringProp name="Argument.value">${__P(RampUpTime,60)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__P(Port,9080)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">${__P(Protocol,http)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="hostname" elementType="Argument">
+            <stringProp name="Argument.name">hostname</stringProp>
+            <stringProp name="Argument.value">${__P(Hostname,localhost)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyServer" elementType="Argument">
+            <stringProp name="Argument.name">proxyServer</stringProp>
+            <stringProp name="Argument.value">${__P(ProxyServer,)}	</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="proxyPort" elementType="Argument">
+            <stringProp name="Argument.name">proxyPort</stringProp>
+            <stringProp name="Argument.value">${__P(ProxyPort,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="threads" elementType="Argument">
+            <stringProp name="Argument.name">threads</stringProp>
+            <stringProp name="Argument.value">${__P(Threads,10)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="loopCount" elementType="Argument">
+            <stringProp name="Argument.name">loopCount</stringProp>
+            <stringProp name="Argument.value">${__P(LoopCount,100)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Dialog 1 " enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador de Iteração" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${loopCount}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampUpTime}</stringProp>
+        <longProp name="ThreadGroup.start_time">1418822390000</longProp>
+        <longProp name="ThreadGroup.end_time">1418822390000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(DurationTime,20)}</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="New safe endpoint" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get newsafe" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${hostname}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.proxyHost">${proxyServer}</stringProp>
+            <stringProp name="HTTPSampler.proxyPort">${proxyPort}</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/newsafe</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-Auth-Token</stringProp>
+                  <stringProp name="Header.value">${IWS_ROLE_ADMIN_ID}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Random Values" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="-814487706">PRINCIPAL_RANDOM_VALUE</stringProp>
+                <stringProp name="-1591504451">CREDENTIAL_RANDOM_VALUE</stringProp>
+                <stringProp name="325892895">PERSONA_ADDRESS_LINE1</stringProp>
+                <stringProp name="325892896">PERSONA_ADDRESS_LINE2</stringProp>
+                <stringProp name="325892897">PERSONA_ADDRESS_LINE3</stringProp>
+                <stringProp name="325892898">PERSONA_ADDRESS_LINE4</stringProp>
+                <stringProp name="325892899">PERSONA_ADDRESS_LINE5</stringProp>
+                <stringProp name="1672812745">PERSONA_ADDRESS_CITY</stringProp>
+                <stringProp name="332673235">PERSONA_ADDRESS_STATE</stringProp>
+                <stringProp name="1171736515">PERSONA_ADDRESS_POSTAL_CODE</stringProp>
+                <stringProp name="-1592473893">PERSONA_ADDRESS_NAME_001</stringProp>
+                <stringProp name="-1592473892">PERSONA_ADDRESS_NAME_002</stringProp>
+                <stringProp name="-1592473891">PERSONA_ADDRESS_NAME_003</stringProp>
+                <stringProp name="-1643427665">PERSONA_EMAIL_ADDRESS_PART1_001</stringProp>
+                <stringProp name="-1642504144">PERSONA_EMAIL_ADDRESS_PART2_001</stringProp>
+                <stringProp name="-1643427664">PERSONA_EMAIL_ADDRESS_PART1_002</stringProp>
+                <stringProp name="-1642504143">PERSONA_EMAIL_ADDRESS_PART2_002</stringProp>
+                <stringProp name="1698451487">PERSONA_PHONE_NUMBER_001</stringProp>
+                <stringProp name="1698451488">PERSONA_PHONE_NUMBER_002</stringProp>
+                <stringProp name="1698451489">PERSONA_PHONE_NUMBER_003</stringProp>
+                <stringProp name="1698451490">PERSONA_PHONE_NUMBER_004</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-68477459">
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="142387970">${__RandomString(${PERSONA_ADDRESS_CITY_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Domain ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">DOMAIN_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.domain&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Principal ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PRINCIPAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential.principal&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Persona ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PERSONA_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.persona&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Credential ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">CREDENTIAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>true</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>true</responseData>
+                <samplerData>true</samplerData>
+                <xml>true</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>true</responseHeaders>
+                <requestHeaders>true</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <url>true</url>
+                <fileName>true</fileName>
+                <threadCounts>true</threadCounts>
+                <sampleCount>true</sampleCount>
+                <idleTime>true</idleTime>
+              </value>
+            </objProp>
+            <stringProp name="filename">test-results/hyxtrix_demo.jtl</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Safe endpoint" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get safe" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${hostname}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.proxyHost">${proxyServer}</stringProp>
+            <stringProp name="HTTPSampler.proxyPort">${proxyPort}</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/safe</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-Auth-Token</stringProp>
+                  <stringProp name="Header.value">${IWS_ROLE_ADMIN_ID}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Random Values" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="-814487706">PRINCIPAL_RANDOM_VALUE</stringProp>
+                <stringProp name="-1591504451">CREDENTIAL_RANDOM_VALUE</stringProp>
+                <stringProp name="325892895">PERSONA_ADDRESS_LINE1</stringProp>
+                <stringProp name="325892896">PERSONA_ADDRESS_LINE2</stringProp>
+                <stringProp name="325892897">PERSONA_ADDRESS_LINE3</stringProp>
+                <stringProp name="325892898">PERSONA_ADDRESS_LINE4</stringProp>
+                <stringProp name="325892899">PERSONA_ADDRESS_LINE5</stringProp>
+                <stringProp name="1672812745">PERSONA_ADDRESS_CITY</stringProp>
+                <stringProp name="332673235">PERSONA_ADDRESS_STATE</stringProp>
+                <stringProp name="1171736515">PERSONA_ADDRESS_POSTAL_CODE</stringProp>
+                <stringProp name="-1592473893">PERSONA_ADDRESS_NAME_001</stringProp>
+                <stringProp name="-1592473892">PERSONA_ADDRESS_NAME_002</stringProp>
+                <stringProp name="-1592473891">PERSONA_ADDRESS_NAME_003</stringProp>
+                <stringProp name="-1643427665">PERSONA_EMAIL_ADDRESS_PART1_001</stringProp>
+                <stringProp name="-1642504144">PERSONA_EMAIL_ADDRESS_PART2_001</stringProp>
+                <stringProp name="-1643427664">PERSONA_EMAIL_ADDRESS_PART1_002</stringProp>
+                <stringProp name="-1642504143">PERSONA_EMAIL_ADDRESS_PART2_002</stringProp>
+                <stringProp name="1698451487">PERSONA_PHONE_NUMBER_001</stringProp>
+                <stringProp name="1698451488">PERSONA_PHONE_NUMBER_002</stringProp>
+                <stringProp name="1698451489">PERSONA_PHONE_NUMBER_003</stringProp>
+                <stringProp name="1698451490">PERSONA_PHONE_NUMBER_004</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-68477459">
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="142387970">${__RandomString(${PERSONA_ADDRESS_CITY_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Domain ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">DOMAIN_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.domain&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Principal ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PRINCIPAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential.principal&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Persona ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PERSONA_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.persona&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Credential ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">CREDENTIAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>true</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>true</responseData>
+                <samplerData>true</samplerData>
+                <xml>true</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>true</responseHeaders>
+                <requestHeaders>true</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <url>true</url>
+                <fileName>true</fileName>
+                <threadCounts>true</threadCounts>
+                <sampleCount>true</sampleCount>
+                <idleTime>true</idleTime>
+              </value>
+            </objProp>
+            <stringProp name="filename">test-results/hyxtrix_demo.jtl</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Unsafe" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get unsafe" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${hostname}</stringProp>
+            <stringProp name="HTTPSampler.port">${port}</stringProp>
+            <stringProp name="HTTPSampler.proxyHost">${proxyServer}</stringProp>
+            <stringProp name="HTTPSampler.proxyPort">${proxyPort}</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/unsafe</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-Auth-Token</stringProp>
+                  <stringProp name="Header.value">${IWS_ROLE_ADMIN_ID}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Random Values" enabled="true">
+              <collectionProp name="UserParameters.names">
+                <stringProp name="-814487706">PRINCIPAL_RANDOM_VALUE</stringProp>
+                <stringProp name="-1591504451">CREDENTIAL_RANDOM_VALUE</stringProp>
+                <stringProp name="325892895">PERSONA_ADDRESS_LINE1</stringProp>
+                <stringProp name="325892896">PERSONA_ADDRESS_LINE2</stringProp>
+                <stringProp name="325892897">PERSONA_ADDRESS_LINE3</stringProp>
+                <stringProp name="325892898">PERSONA_ADDRESS_LINE4</stringProp>
+                <stringProp name="325892899">PERSONA_ADDRESS_LINE5</stringProp>
+                <stringProp name="1672812745">PERSONA_ADDRESS_CITY</stringProp>
+                <stringProp name="332673235">PERSONA_ADDRESS_STATE</stringProp>
+                <stringProp name="1171736515">PERSONA_ADDRESS_POSTAL_CODE</stringProp>
+                <stringProp name="-1592473893">PERSONA_ADDRESS_NAME_001</stringProp>
+                <stringProp name="-1592473892">PERSONA_ADDRESS_NAME_002</stringProp>
+                <stringProp name="-1592473891">PERSONA_ADDRESS_NAME_003</stringProp>
+                <stringProp name="-1643427665">PERSONA_EMAIL_ADDRESS_PART1_001</stringProp>
+                <stringProp name="-1642504144">PERSONA_EMAIL_ADDRESS_PART2_001</stringProp>
+                <stringProp name="-1643427664">PERSONA_EMAIL_ADDRESS_PART1_002</stringProp>
+                <stringProp name="-1642504143">PERSONA_EMAIL_ADDRESS_PART2_002</stringProp>
+                <stringProp name="1698451487">PERSONA_PHONE_NUMBER_001</stringProp>
+                <stringProp name="1698451488">PERSONA_PHONE_NUMBER_002</stringProp>
+                <stringProp name="1698451489">PERSONA_PHONE_NUMBER_003</stringProp>
+                <stringProp name="1698451490">PERSONA_PHONE_NUMBER_004</stringProp>
+              </collectionProp>
+              <collectionProp name="UserParameters.thread_values">
+                <collectionProp name="-68477459">
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="2060002548">${__RandomString(${LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1073778137">${__RandomString(${PERSONA_ADDRESS_LINE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="142387970">${__RandomString(${PERSONA_ADDRESS_CITY_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="1961445616">${__RandomString(${PERSONA_ADDRESS_POSTAL_CODE_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="-1818429982">${__RandomString(${PERSONA_ADDRESS_NAME_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="450141204">${__RandomString(${PERSONA_EMAIL_ADDRESS_LENGTH_PART1},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                  <stringProp name="387005470">${__RandomString(${PERSONA_PHONE_NUMBER_LENGTH},${CHARS})}</stringProp>
+                </collectionProp>
+              </collectionProp>
+              <boolProp name="UserParameters.per_iteration">false</boolProp>
+            </UserParameters>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Domain ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">DOMAIN_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.domain&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Principal ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PRINCIPAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential.principal&quot;:&quot;(.+?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Persona ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PERSONA_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.persona&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Credential ID Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">CREDENTIAL_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;com.hp.idm.credential&quot;:{&quot;com.hp.idm.ref.id&quot;:&quot;(.+?)&quot;,.*}</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>true</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>true</responseData>
+                <samplerData>true</samplerData>
+                <xml>true</xml>
+                <fieldNames>false</fieldNames>
+                <responseHeaders>true</responseHeaders>
+                <requestHeaders>true</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <url>true</url>
+                <fileName>true</fileName>
+                <threadCounts>true</threadCounts>
+                <sampleCount>true</sampleCount>
+                <idleTime>true</idleTime>
+              </value>
+            </objProp>
+            <stringProp name="filename">test-results/hyxtrix_demo.jtl</stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <boolProp name="useGroupName">true</boolProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <threadCounts>true</threadCounts>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Custom Workflow Parameters" enabled="true">
+        <collectionProp name="UserParameters.names">
+          <stringProp name="1480214045">IDENTITY_LOCALE_PREFERRED</stringProp>
+          <stringProp name="947892920">IDENTITY_LOCALES</stringProp>
+          <stringProp name="-939278084">IDENTITY_REPLICATION_ZONE_HOME_ID</stringProp>
+          <stringProp name="898679367">IDENTITY_REPLICATION_ZONES_ID</stringProp>
+          <stringProp name="970457015">IDENTITTY_DOMAIN_ID</stringProp>
+          <stringProp name="1748416506">IWS_ROLE_ADMIN_ID</stringProp>
+          <stringProp name="-1168101090">IWS_ROLE_SUPER_ADMIN_ID</stringProp>
+          <stringProp name="-573643751">IWS_ROLE_IDENTITYSTACK_PROVISION_ACTIVATE_ID</stringProp>
+          <stringProp name="64085949">CHARS</stringProp>
+          <stringProp name="-2053034266">LENGTH</stringProp>
+          <stringProp name="1640950268">PERSONA_ADDRESS_NAME_LENGTH</stringProp>
+          <stringProp name="1855290483">PERSONA_ADDRESS_LINE_LENGTH</stringProp>
+          <stringProp name="-910340324">PERSONA_ADDRESS_CITY_LENGTH</stringProp>
+          <stringProp name="-1279330350">PERSONA_ADDRESS_STATE_LENGTH</stringProp>
+          <stringProp name="-2058276126">PERSONA_ADDRESS_POSTAL_CODE_LENGTH</stringProp>
+          <stringProp name="431404888">PERSONA_ADDRESS_COUNTRY</stringProp>
+          <stringProp name="1684347910">PERSONA_EMAIL_ADDRESS_LENGTH_PART1</stringProp>
+          <stringProp name="1684347911">PERSONA_EMAIL_ADDRESS_LENGTH_PART2</stringProp>
+          <stringProp name="380480056">PERSONA_PHONE_NUMBER_LENGTH</stringProp>
+          <stringProp name="858054596">IWS_ROLE_RESET_CREDENTIAL_ID</stringProp>
+        </collectionProp>
+        <collectionProp name="UserParameters.thread_values">
+          <collectionProp name="-900767093">
+            <stringProp name="96646644">en_US</stringProp>
+            <stringProp name="96646644">en_US</stringProp>
+            <stringProp name="-1335809871">yyyoyyfscehki3uuyrr433ckb1a4gc75</stringProp>
+            <stringProp name="-1335809871">yyyoyyfscehki3uuyrr433ckb1a4gc75</stringProp>
+            <stringProp name="1031619567">yyyoyy8etmy7ydhp6d9qrhc3dxemhhw1</stringProp>
+            <stringProp name="2095498600">yyyoyyfprbk7dreghea7n1b47mectgbo</stringProp>
+            <stringProp name="149842643">yyyoyyybth1k4yo6yecou1pzyyxh4h5m</stringProp>
+            <stringProp name="779739274">yyyoyyf3zwx37kgyrtjjksui1q5i9dzf</stringProp>
+            <stringProp name="-384706913">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48625">100</stringProp>
+            <stringProp name="49746">255</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="50547">300</stringProp>
+            <stringProp name="1668">48</stringProp>
+            <stringProp name="2718">US</stringProp>
+            <stringProp name="1758">75</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="-1332992399">yyyoyy87j9dggxxha9k37zsuso5z87p4</stringProp>
+          </collectionProp>
+        </collectionProp>
+        <boolProp name="UserParameters.per_iteration">false</boolProp>
+      </UserParameters>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

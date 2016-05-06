@@ -11,6 +11,8 @@ Hystrix dashboard
 	Clone  https://github.com/Netflix/Hystrix.git
 	Go to /Hystrix/hystrix-dashboard
 	Run it using ../gradlew jettyRun
+	Go to url http://localhost:7979/hystrix-dashboard/ and add http://localhost:9080/hystrix.stream. Click and Add Stream and then in monitor Stream.
+	Play it
 
 Credits
 	Authx Team

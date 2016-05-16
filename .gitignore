@@ -1,0 +1,16 @@
+.idea                            
+.idea/*                          
+.idea/**                         
+.project                         
+.settings                        
+*.iml                            
+*.orig                           
+target                           
+*/target/                        
+*/*/target                       
+target/*                         
+dep_current.txt                  
+.classpath                       
+.project                         
+.settings                        
+.settings/*                      
